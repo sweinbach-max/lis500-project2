@@ -146,19 +146,19 @@ section:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Team Member Cards (About Us) - Side-by-Side Flex, Full Width */
+/* Team Member Cards in About Us */
 .team-member {
     display: flex;
-    flex-direction: row;        /* Photo on left, bio on right */
+    flex-direction: row;        
     align-items: center;
     gap: 2rem;
-    width: 100%;                /* Full width of main, never squishes */
+    width: 100%;                
     background-color: var(--accent-light);
     border: 1px solid #bcd9d7;
     border-left: 5px solid var(--accent-color);
     border-radius: 10px;
     padding: 1.5rem 1.75rem;
-    margin-bottom: 1.75rem;     /* Distinct vertical space between members */
+    margin-bottom: 1.75rem;     
     box-sizing: border-box;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -186,7 +186,7 @@ section:hover {
 }
 
 .sam-img {
-    object-position: top center;
+    object-position: 50% 15%;
 }
 
 .member-info {
