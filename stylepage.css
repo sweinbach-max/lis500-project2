@@ -13,21 +13,6 @@ AFter hearing feedback on our site from classmates and peers, I updated the shar
 adding accent borders to section cards, and enhancing hover effects. These changes make the site more visually engaging and cohesive 
 while maintaining the existing professional, accessible, and responsive design. JI */
 
-/* 
-FIRST ITERATION
-The purpose of the stylesheet is to give every page in the project a consistent look to avoid using inline CSS. 
-I chose a whitish backdrop and card containers, with a dark header navigation bar that stands out. When it comes to our font and color choices, 
-I ran them through the WAVE accessibility extension to be certain we are in compliance with WCAG AA guidelines. I used high-contrast text 
-which is essential whether it is on the dark header or the white of the cards. For a responsive design, the main container is built 
-with fluid image sizing, margins and proportional maximum widths so it will hold up on any screen. All navigation links have been given 
-clear hover transitions and focus indicators for the benefit of keyboard and screen-reader users. JI */
-
-/*
-SECOND ITERATION
-I updated the shared stylesheet by adding a consistent teal and navy color palette, improving heading and link colors, 
-adding accent borders to section cards, and enhancing hover effects. These changes make the site more visually engaging and cohesive 
-while maintaining the existing professional, accessible, and responsive design. JI */
-
 :root {
     --accent-color: #147d82;
     --accent-dark: #17324d;
