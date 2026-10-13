@@ -232,3 +232,24 @@ Original implicit bias visual */
         grid-template-columns: 1fr;
     }
 }
+.hero-banner {
+    background: linear-gradient(135deg, #2563eb, #14b8a6);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero-banner h1 {
+    color: white;
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+.hero-banner p {
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+}
