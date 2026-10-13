@@ -5,6 +5,12 @@ which is essential whether it is on the dark header or the white of the cards. F
 with fluid image sizing, margins and proportional maximum widths so it will hold up on any screen. All navigation links have been given 
 clear hover transitions and focus indicators for the benefit of keyboard and screen-reader users. JI */
 
+/* Site color palette */
+:root {
+    --accent-color: #147d82;
+    --accent-light: #f0f7f7;
+    --accent-dark: #17324d;
+}
 
 /* Body */
 * {
@@ -47,7 +53,8 @@ nav a:hover,
 nav a:focus {
     color: #ffffff;
     background-color: rgba(255, 255, 255, 0.15);
-    outline: 2px solid #64b5f6;
+    outline: 2px solid var(--accent-color);
+
     outline-offset: 2px;
 }
 
@@ -61,6 +68,7 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
     border: 1px solid #e1e4e8;
+    border-top: 4px solid var(--accent-color);
     flex: 1;
 }
 
@@ -76,7 +84,7 @@ h1 {
 
 h2 {
     font-size: 1.35rem;
-    color: #1f2937;
+    color: var(--accent-dark);
     margin-top: 2rem;
     margin-bottom: 0.75rem;
     font-weight: 600;
@@ -84,7 +92,7 @@ h2 {
 
 h3 {
     font-size: 1.1rem;
-    color: #374151;
+    color: var(--accent-color);
     margin-top: 1.25rem;
     margin-bottom: 0.4rem;
 }
@@ -98,13 +106,14 @@ p {
 
 /* Links */
 main a {
-    color: #0366d6;
+    color: var(--accent-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 main a:hover,
 main a:focus {
+    color: var(--accent-dark);
     text-decoration: underline;
 }
 
@@ -112,14 +121,18 @@ main a:focus {
 section, .team-member {
     background-color: #fafbfc;
     border: 1px solid #e1e4e8;
+    border-left: 4px solid var(--accent-color);
     border-radius: 6px;
     padding: 1.25rem 1.5rem;
     margin-bottom: 1.25rem;
-    transition: border-color 0.2s ease;
+    transition: all 0.25s ease;
 }
 
-section:hover, .team-member:hover {
-    border-color: #cbd5e1;
+section:hover,
+.team-member:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Lists */
