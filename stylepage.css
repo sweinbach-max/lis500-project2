@@ -9,11 +9,14 @@ clear hover transitions and focus indicators for the benefit of keyboard and scr
 
 /*
 SECOND ITERATION
-I updated the shared stylesheet by adding a consistent teal and navy color palette, improving heading and link colors, 
+AFter hearing feedback on our site from classmates and peers, I updated the shared stylesheet by adding a consistent teal and navy color palette, improving heading and link colors, 
 adding accent borders to section cards, and enhancing hover effects. These changes make the site more visually engaging and cohesive 
 while maintaining the existing professional, accessible, and responsive design. JI */
 
-
+:root {
+    --accent-color: #147d82;
+    --accent-dark: #17324d; 
+    --accent-light: #f0f7f7;
 
 /* Body */
 * {
@@ -180,7 +183,7 @@ footer {
     margin-top: auto;
 }
 
-Original implicit bias visual */
+/* Original implicit bias visual */
 
 .bias-visual {
     margin: 30px auto;
@@ -242,7 +245,7 @@ Original implicit bias visual */
     font-style: italic;
 }
 
-/* Mobile-friendly design */
+/* Mobile Friendly Rules */
 @media (max-width: 600px) {
     .bias-steps {
         grid-template-columns: 1fr;
