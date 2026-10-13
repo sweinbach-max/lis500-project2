@@ -7,19 +7,32 @@ which is essential whether it is on the dark header or the white of the cards. F
 with fluid image sizing, margins and proportional maximum widths so it will hold up on any screen. All navigation links have been given 
 clear hover transitions and focus indicators for the benefit of keyboard and screen-reader users. JI */
 
-/*
+/* 
 SECOND ITERATION
-AFter hearing feedback on our site from classmates and peers, I updated the shared stylesheet by adding a consistent teal and navy color palette, improving heading and link colors, 
-adding accent borders to section cards, and enhancing hover effects. These changes make the site more visually engaging and cohesive 
-while maintaining the existing professional, accessible, and responsive design. JI */
+For the final iteration, I incoroprated the feedback I received from my TA and peers. I have redesigned the site’s visual identity to be more creative and interactive.
+Using the Advee site as inspiration, I implemented a cream sandish and navy/black color scheme. I have structured the interface using a sand background
+together with white content cards and thin, but noticibale borders to provide division between contnent blocks. I used teal and navy colors as focused interactive elements 
+in navigation pills, image borders, and category tags. All fonts and typography is modern. And again, for a responsive design, the main container is built 
+with fluid image sizing, margins and proportional maximum widths so it will hold up on any screen. All navigation links have been given 
+clear hover transitions and focus indicators for the benefit of keyboard and screen-reader users. Using the WAVE accessibility extension, I have ensured compliance with WCAG AA guidelines. JI */
+
 
 :root {
-    --accent-color: #147d82;
-    --accent-dark: #17324d;
-    --accent-light: #f0f7f7;
+    --bg-page: #faf8f5;             
+    --bg-card: #ffffff;                    
+    
+    --text-main: #111317;          
+    --text-body: #4a4f57;           
+    
+    --accent-teal: #147d82;         
+    --accent-navy: #17324d;         
+    --accent-light: #eef6f6;        
+    
+    --divider: #eae5dc;
+    --radius-of-pill: 9999px;
+    --shadow-soft: 0 4px 20px -2px rgba(17, 19, 23, 0.04);
 }
 
-/* Global Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,303 +40,252 @@ while maintaining the existing professional, accessible, and responsive design. 
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #2b2d42;
-    background-color: #f4f6f8;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+    color: var(--text-main);
+    background-color: var(--bg-page);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Navigation Bar */
+/* Nav Bar */
 nav {
-    background-color: #1a1e24;
-    padding: 1rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-page);
+    border-bottom: 1px solid var(--divider);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav a {
-    color: #e0e6ed;
+    color: var(--text-body);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
-    margin: 0 1rem;
-    padding: 0.35rem 0.6rem;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
-    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-of-pill);
+    transition: all 0.2s ease;
 }
 
-nav a:hover,
-nav a:focus {
+nav a:hover {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+}
+
+nav a[aria-current="page"] {
+    background-color: var(--accent-teal);
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.15);
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
 }
 
-/* Main Container: Explicitly stacks all child sections vertically */
+/* Main Layout */
 main {
-    display: block;             /* Eliminates flex squishing across child cards */
-    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    max-width: 880px;
     width: 90%;
-    margin: 2.5rem auto;
-    background-color: #ffffff;
-    padding: 2.5rem 3rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e1e4e8;
-    border-top: 4px solid var(--accent-color);
+    margin: 3.5rem auto;
     flex: 1;
 }
 
-/* Headings */
 h1 {
-    font-size: 2rem;
-    color: #111827;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--accent-navy);
+    margin-bottom: 1.25rem;
 }
 
 h2 {
-    font-size: 1.35rem;
-    color: var(--accent-dark);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--accent-navy);
     margin-top: 2rem;
     margin-bottom: 1.25rem;
-    font-weight: 600;
 }
 
 h3 {
-    font-size: 1.15rem;
-    color: var(--accent-dark);
-    margin-top: 0;
-    margin-bottom: 0.4rem;
+    font-size: 1.25rem;
+    color: var(--accent-navy);
+    margin-bottom: 0.5rem;
 }
 
-/* Paragraphs */
 p {
-    margin-bottom: 1.2rem;
-    color: #4b5563;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    color: var(--text-body);
+    margin-bottom: 1.25rem;
 }
 
-/* Links */
-main a {
-    color: var(--accent-color);
-    text-decoration: none;
+a {
+    color: var(--accent-teal);
     font-weight: 600;
 }
 
-main a:hover,
-main a:focus {
-    color: var(--accent-dark);
-    text-decoration: underline;
+a:hover {
+    color: var(--accent-navy);
 }
 
-/* In-Page Quick Jump Links */
-.section-links a {
-    margin-right: 25px;
+/* Card Sections */
+section, 
+.team-member, 
+.hero-profile,
+.bias-visual {
+    background-color: var(--bg-card);
+    border: 1px solid var(--divider);
+    border-radius: 16px;
+    padding: 2.25rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Section Boxes */
-section {
-    background-color: var(--accent-light);
-    border: 1px solid #e1e4e8;
-    border-left: 4px solid var(--accent-color);
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.5rem;
-    transition: all 0.25s ease;
-}
-
-section:hover {
-    border-color: var(--accent-color);
+section:hover, 
+.team-member:hover, 
+.hero-profile:hover {
+    border-color: var(--accent-teal);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* Team Member Cards in About Us */
+/* 5. Team Members */
 .team-member {
     display: flex;
-    flex-direction: row;        
     align-items: center;
-    gap: 2rem;
-    width: 100%;                
-    background-color: var(--accent-light);
-    border: 1px solid #bcd9d7;
-    border-left: 5px solid var(--accent-color);
-    border-radius: 10px;
-    padding: 1.5rem 1.75rem;
-    margin-bottom: 1.75rem;     
-    box-sizing: border-box;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.team-member:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    gap: 2.5rem;
 }
 
 .member-avatar {
-    flex: 0 0 130px;           
-    width: 130px;
-    text-align: center;
+    flex: 0 0 135px;
 }
 
 .circle-portrait {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;       
-    object-fit: cover;          
-    border: 3px solid var(--accent-color);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-    display: block;
-    margin: 0 auto;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-teal);
 }
 
 .sam-img {
-    object-position: 50% 15%;
+    object-position: 50% 12%;
 }
 
-.member-info {
-    flex: 1;                   
+.member-info flex {
+    flex: 1;
 }
 
-.member-info h3 {
-    margin-top: 0;
-    margin-bottom: 0.4rem;
-    font-size: 1.3rem;
-    color: var(--accent-dark);
+/* 6. Tech Heroes */
+.hero-profile {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
 }
 
-.member-info p {
-    margin-bottom: 0;
-    color: #374151;
-    font-size: 0.98rem;
-    line-height: 1.6;
-}
-
-/* Lists */
-ul {
-    margin: 0.75rem 0 1.5rem 1.5rem;
-    color: #4b5563;
-}
-
-li {
-    margin-bottom: 0.4rem;
-}
-
-/* Media & Images */
-img, .hero-image, .research-image, .preview-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    display: block;
-    margin: 1.25rem auto;
-    border: 1px solid #e5e7eb;
-}
-
-figure {
-    margin: 1.5rem 0;
-}
-
-figcaption {
-    font-size: 0.85rem;
-    color: #6b7280;
-    margin-top: 0.4rem;
-    font-style: italic;
-}
-
-/* Footer */
-footer {
+.hero-image-col {
+    flex: 0 0 200px;
     text-align: center;
-    padding: 1.5rem 1rem;
-    font-size: 0.85rem;
-    color: #6b7280;
-    border-top: 1px solid #e5e7eb;
-    background-color: #ffffff;
-    margin-top: auto;
 }
 
-/* Original Implicit Bias Visual */
-.bias-visual {
-    margin: 30px auto;
-    padding: 25px;
+.hero-portrait {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--divider);
+    margin-bottom: 0.75rem;
+}
+
+.hero-badge {
     background-color: var(--accent-light);
-    border-radius: 14px;
-    border: 2px solid var(--accent-color);
-    text-align: center;
-    max-width: 850px;
-    box-sizing: border-box;
+    color: var(--accent-teal);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-of-pill);
 }
 
-.bias-visual h2 {
-    color: var(--accent-dark);
-    margin-bottom: 22px;
+/* 7. Implicit Bias Resources */
+.section-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.section-links a {
+    background-color: var(--bg-card);
+    border: 1px solid var(--divider);
+    color: var(--text-body);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-of-pill);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.section-links a:hover {
+    background-color: var(--accent-navy);
+    color: #ffffff;
+    border-color: var(--accent-navy);
 }
 
 .bias-steps {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 1.5rem;
 }
 
 .bias-step {
-    background: #ffffff;
-    padding: 20px 12px;
-    border-radius: 10px;
-    border: 1px solid #bcd9d7;
+    background-color: var(--bg-page);
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 1.5rem;
 }
 
 .step-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
+    width: 32px;
+    height: 32px;
+    background-color: var(--accent-navy);
     color: #ffffff;
-    font-weight: bold;
-    margin-bottom: 10px;
+    border-radius: 50%;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
-.bias-step h3 {
-    color: var(--accent-dark);
-    margin: 8px 0;
-    font-size: 1.05rem;
+/* 8. Media & Footer */
+img {
+    max-width: 100%;
+    border-radius: 12px;
 }
 
-.bias-step p {
+figcaption {
+    text-align: center;
     font-size: 0.9rem;
-    margin: 0;
+    color: var(--text-body);
+    margin-top: 0.5rem;
 }
 
-.bias-visual figcaption {
-    margin-top: 20px;
-    font-size: 0.85rem;
-    color: #445566;
-    font-style: italic;
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--divider);
+    color: var(--text-body);
+    font-size: 0.9rem;
 }
 
-/* Mobile Responsive Collapse */
-@media (max-width: 650px) {
-    main {
-        padding: 1.5rem;
-    }
-
-    .team-member {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-        padding: 1.25rem;
-    }
-
-    .bias-steps {
-        grid-template-columns: 1fr;
-    }
+/* Fixes the weird issue where the header was turning gray*/
+#diagram p,
+#diagram ol,
+#diagram li,
+#diagram strong {
+    color: #4a4f57; 
 }

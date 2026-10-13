@@ -10,11 +10,11 @@
 
 <body>
 
-    <nav>
-        <a href="index.html">Home</a>
+    <nav aria-label="Main navigation">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About Us</a>
         <a href="implicitbias.html">Implicit Bias</a>
-        <a href="techhero.html">Tech Hero</a>
+        <a href="techhero.html">Tech Heroes</a>
     </nav>
 
     <main>
@@ -27,13 +27,13 @@
             and insights into these important topics through our research.
         </p>
 
-    <figure>
-        <img src="homepage-image.webp" alt="University of Wisconsin-Madison campus" class="homepage-image">
+        <figure>
+            <img src="homepage-image.webp" alt="University of Wisconsin-Madison campus" class="homepage-image">
 
-        <figcaption>
-        The University of Wisconsin-Madison provides opportunities to explore how technology and society intersect.
-        </figcaption>
-    </figure>
+            <figcaption>
+                A photo of the University of Wisconsin-Madison's College of Engineering.
+            </figcaption>
+        </figure>
 
         <h2>Project Overview</h2>
 
@@ -55,12 +55,11 @@
         </section>
 
         <section>
-            <h3> Our Tech Hero</h3>
+            <h3>Our Tech Heroes</h3>
             <p>
-                A profile highlighting Dr. Joy Buolamwini and her work challenging algorithmic 
-                bias and facial recognition bias in tech.
+                A profile highlighting hidden figures in the tech industry and their work challenging racial and gender biases in the space.
             </p>
-            <p><a href="techhero.html">Visit Tech Hero Profile</a></p>
+            <p><a href="techhero.html">Visit Tech Heroes Profile</a></p>
         </section>
     </main>
 
@@ -68,13 +67,17 @@
         <p>Website for LIS 500 by Jesse, Sam, and Joel.</p>
     </footer>
 
-<!-- For the first iteration of index.html, I made use of the basic elements such as nav, main, section, 
-headings and footer. The goal of the index page is to provide a clear entry point to the project, introducing 
-its purpose and providing links to the other pages. The page is structured with a navigation bar at the top, 
-followed by a main content area that includes an overview of the project and links to the other pages. Each section 
-is clearly labeled with headings, making it easy for users to navigate and understand the content. The footer provides 
-additional context about the project and its current iteration.The document is tied to our common external stylesheet, 
-stylepage.css. JI -->
-
+    <!--
+    INDEX PAGE CODE COMMENT BLOCK [JI]
+    Word count: ~110 words
+    This index page serves as the entry portal for our LIS 500 group project website. 
+    I structured the markup using semantic HTML5 elements including nav, main, figure, 
+    section, and footer to establish an intuitive document outline for accessibility. 
+    The layout connects to our external stylepage.css file without relying on inline 
+    styles. The featured image uses responsive scaling with a descriptive alt tag and 
+    caption, while the overview cards provide clear call-to-action jump links to guide 
+    users through our research. All element pairings and text contrast levels were verified 
+    using the WAVE accessibility tool to ensure full compliance with WCAG AA guidelines. JI
+    -->
 </body>
 </html>

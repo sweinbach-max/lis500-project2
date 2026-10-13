@@ -10,11 +10,11 @@
 
 <body>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
+        <a href="about.html" aria-current="page">About Us</a>
         <a href="implicitbias.html">Implicit Bias</a>
-        <a href="techhero.html">Tech Hero</a>
+        <a href="techhero.html">Tech Heroes</a>
     </nav>
 
     <main>
@@ -27,6 +27,7 @@
         </p>
 
         <h2>Meet Our Team</h2>
+
         <div class="team-member">
             <div class="member-avatar">
                 <img src="image0.png" alt="Portrait photo of Sam" class="circle-portrait sam-img">
@@ -41,6 +42,7 @@
                 </p>
             </div>
         </div>
+
         <div class="team-member">
             <div class="member-avatar">
                 <img src="image2.png" alt="Portrait photo of Jesse" class="circle-portrait">
@@ -73,13 +75,26 @@
 
     </main>
 
-</body>
-  <!--
+      <footer>
+        <p>Website for LIS 500 by Jesse, Sam, and Joel.</p>
+    </footer>
+
+    <!--
     ABOUT US PAGE
     Author: Sam
 
     This page introduces the members of our LIS 500 project group.
     It includes a short biography for each group member describing
     their academic background, interests, and experience.
--->
+
+    Word Count Update & Accessibility Note [JI]
+    I structured the roster layout using semantic HTML5 elements including nav, main, 
+    and article containers to provide an accessible document hierarchy for screen readers. 
+    The layout uses CSS Flexbox with column stacking on the main container so each member card 
+    spans full width down the page, while keeping the circular image anchored to the left of the bio 
+    text. All images have descriptive alt text to meet WCAG AA accessibility standards when scanned 
+    with the WAVE tool. On mobile viewports, responsive media queries collapse each card into a centered 
+    single-column layout so no text or images clip. JI
+    -->
+</body>
 </html>
