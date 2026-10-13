@@ -126,10 +126,6 @@ main a:focus {
     text-decoration: underline;
 }
 
-.section-links a {
-    margin-right: 25px;
-}
-
 /* Section Boxes/Cards */
 section, .team-member {
     background-color: var(--accent-light);
