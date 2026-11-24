@@ -589,7 +589,39 @@ html, body {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.toc-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.toc-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #9ca3af;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.toc-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.toc-btn.active {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(56, 189, 248, 0.12);
+
 @media (max-width: 860px) {
+
+.toc-nav {
+  display: none;
+}
   html, body { overflow-y: auto; }
   .split-layout { grid-template-columns: 1fr; }
   .mini-cards { grid-template-columns: 1fr; }
