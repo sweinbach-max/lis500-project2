@@ -329,7 +329,7 @@ html, body {
   margin-bottom: 0.65rem;
 }
 
-/* All-White Animated Output Bars (Matching Teachable Machine Style) */
+/* TM Animated Output Bars */
 .bar-row {
   display: grid;
   grid-template-columns: 112px 1fr;
