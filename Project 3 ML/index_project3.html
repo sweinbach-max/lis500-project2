@@ -18,7 +18,7 @@
     <div class="brand">
       <span>LIS 500 | PROJECT #3</span>
     </div>
-    
+
   <!-- Table of Contents -->
     <nav class="toc-nav" aria-label="Table of Contents">
       <button class="toc-btn active" type="button" onclick="goToSlide(0)">01. Model</button>
@@ -26,6 +26,9 @@
       <button class="toc-btn" type="button" onclick="goToSlide(2)">03. Video</button>
       <button class="toc-btn" type="button" onclick="goToSlide(3)">04. Statement</button>
     </nav>
+
+    <div class="nav-right" style="display: flex; align-items: center; gap: 0.75rem;">
+      <a href="../index.html" class="back-btn">&#8592; Project 2</a>
 
     <nav class="icon-links" aria-label="Project Links">
       <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3" target="_blank" title="GitHub Repository" aria-label="GitHub Repository">
@@ -401,6 +404,27 @@
       defaults.forEach(function (name, idx) {
         labelContainer.children[idx].querySelector(".bar-label").textContent = name;
       });
+
+      const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    const tocBtns = document.querySelectorAll(".toc-btn");
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove("active");
+      dots[currentSlide].classList.remove("active");
+      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.remove("active");
+
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides[currentSlide].classList.add("active");
+      dots[currentSlide].classList.add("active");
+      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.add("active");
+
+      if (currentSlide !== 3 && isReading) {
+        resetStatementState();
+      }
+    }
+    
     }
   </script>
 </body>
