@@ -458,9 +458,10 @@ html, body {
 }
 
 /* Slide 3 Video Frame */
-/* Slide 3 Video Frame */
 .video-frame {
   max-width: 680px;
+  height: auto;
+  display: block;
   background: rgba(12, 15, 23, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 14px;
@@ -472,12 +473,12 @@ html, body {
   display: block;
   width: 100%;
   max-width: 680px;
-  max-height: 54vh;
+  max-height: 50vh;
   border-radius: 14px;
   background: #000000;
 }
 
-/* Slide 4 Scrollable Essay Box */
+/* Slide 4 Scroll Essay Box */
 .statement-header {
   max-width: 780px;
   display: flex;
