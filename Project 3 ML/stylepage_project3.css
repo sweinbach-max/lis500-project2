@@ -616,15 +616,11 @@ html, body {
   color: #38bdf8;
   border-color: rgba(56, 189, 248, 0.45);
   background: rgba(56, 189, 248, 0.12);
+}
 
 @media (max-width: 860px) {
-
-.toc-nav {
-  display: none;
-}
+  .toc-nav { display: none; }
   html, body { overflow-y: auto; }
   .split-layout { grid-template-columns: 1fr; }
   .mini-cards { grid-template-columns: 1fr; }
 }
-
-
