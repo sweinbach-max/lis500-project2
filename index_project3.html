@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIS 500 Project 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylepage.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Icon Bar -->
+  <header class="top-nav">
+    <div class="brand">
+      <span>LIS 500 | PROJECT #3</span>
+    </div>
+
+    <nav class="icon-links" aria-label="Project Links">
+      <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3" target="_blank" title="GitHub Repository" aria-label="GitHub Repository">
+        <img src="25231.png" alt="GitHub Repository" class="invert-icon" />
+      </a>
+      <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset" target="_blank" title="Dataset Folder" aria-label="Dataset Folder">
+        <img src="foldercustomgithub_93186.png" alt="Dataset Folder" class="invert-icon" />
+      </a>
+      <a class="icon-btn" href="https://teachablemachine.withgoogle.com/models/omq-yZ4EE/" target="_blank" title="Teachable Machine Model" aria-label="Teachable Machine Model">
+        <img src="images.png" alt="Teachable Machine Model" />
+      </a>
+    </nav>
+  </header>
+
+  <!-- Body -->
+  <main class="showcase" id="showcase">
+    <!-- Left / Right Arrows -->
+    <button class="nav-arrow prev" type="button" onclick="changeSlide(-1)" aria-label="Previous Screen">&#10094;</button>
+    <button class="nav-arrow next" type="button" onclick="changeSlide(1)" aria-label="Next Screen">&#10095;</button>
+
+    <!-- SLIDE 1: Hero + Live Classifier -->
+    <section class="slide active" data-slide="0">
+      <div class="slide-bg bg-1"></div>
+      <div class="slide-vignette"></div>
+      <div class="slide-content split-layout">
+
+       <div class="hero-copy">
+          <h1 class="hero-title">Our Model</h1>
+          <p class="description" style="margin-bottom: 0.65rem;">
+            Trained on 304 original photographs by Jesse Ijiwola, Sam Weinbach, and Joel Koenig and classified into 3 states:
+          </p>
+          <ol class="description" style="padding-left: 1.35rem; margin-bottom: 1.4rem;">
+            <li>Laptop_Open</li>
+            <li>Laptop_Closed</li>
+            <li>No_Laptop (Or Empty Desk)</li>
+          </ol>
+
+          <div class="action-row" style="position: relative; z-index: 20;">
+            <button class="btn-primary" id="start-btn" type="button" onclick="init()" style="display: inline-flex;">Start Camera</button>
+            <button class="btn-secondary" id="stop-btn" type="button" onclick="stopCamera()" style="display: none;">Stop Camera</button>
+            <button class="btn-secondary" type="button" onclick="goToSlide(3)">&#9432; Read Project Statement</button>
+          </div>
+        </div>
+
+        <div class="classifier-stage">
+          <div class="camera-frame" id="webcam-container">
+            <span class="cam-idle">Camera Off</span>
+          </div>
+          <div class="output-header">Output</div>
+          <div id="label-container" class="predictions">
+            <div class="bar-row">
+              <span class="bar-label">Laptop_Open</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div><span class="bar-pct">0%</span></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Laptop_Closed</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div><span class="bar-pct">0%</span></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">No_Laptop</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div><span class="bar-pct">0%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Dataset -->
+    <section class="slide" data-slide="1">
+      <div class="slide-bg bg-2"></div>
+      <div class="slide-vignette"></div>
+
+      <div class="slide-content">
+        <div class="badge-row">
+        </div>
+        <h2 class="hero-title">Dataset</h2>
+        <p class="meta-line">Laptop_Open (102) &bull; Laptop_Closed (102) &bull; No_Laptop (100)</p>
+        <p class="description">
+          All images were taken directly on different desk surfaces, with various screen brightness and angles to avoid background bias.
+        </p>
+        <div class="mini-cards">
+          <a class="mini-card" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset/Laptop_Open" target="_blank" rel="noopener noreferrer">
+            <div class="mini-card-top">
+              <span>01: Open Laptop</span>
+              <img src="external-link.svg" alt="Open folder on GitHub" class="card-ext-icon" />
+            </div>
+            <strong>102 Photos</strong>
+            <p>Open laptops from from different angles, lighting, and backgrounds.</p>
+          </a>
+
+          <a class="mini-card" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset/Laptop_Closed" target="_blank" rel="noopener noreferrer">
+            <div class="mini-card-top">
+              <span>02: Closed Laptop</span>
+              <img src="external-link.svg" alt="Open folder on GitHub" class="card-ext-icon" />
+            </div>
+            <strong>102 Photos</strong>
+            <p>Shut laptops from different angles, lighting, and backgrounds.</p>
+          </a>
+
+          <a class="mini-card" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset/No_Laptop" target="_blank" rel="noopener noreferrer">
+            <div class="mini-card-top">
+              <span>03: No Laptop</span>
+              <img src="external-link.svg" alt="Open folder on GitHub" class="card-ext-icon" />
+            </div>
+            <strong>100 Photos</strong>
+            <p>Captured the same surfaces/desks without a laptop present.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Demo Video -->
+    <section class="slide" data-slide="2">
+      <div class="slide-bg bg-3"></div>
+      <div class="slide-vignette"></div>
+
+      <div class="slide-content">
+        <div class="badge-row">
+        </div>
+        <h2 class="hero-title">Video<br />Demonstration</h2>
+        <!-- Replace the div below with <video src="demo.mp4" controls class="demo-video"></video> when ready -->
+        <div class="video-frame">
+          <p>Video here</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Project Statement -->
+    <section class="slide" data-slide="3" id="statement-slide">
+      <div class="slide-bg bg-4"></div>
+      <div class="slide-vignette"></div>
+
+      <div class="slide-content">
+        <div class="statement-header">
+          <h2 class="hero-title statement-title">Project<br />Statement</h2>
+          <button class="btn-primary statement-read-btn" id="read-btn" type="button" onclick="toggleStatement()">
+            Read &#8595;
+          </button>
+        </div>
+
+        <div class="statement-scroll" id="statement-box" onscroll="lockReading()">
+          <article class="statement-document">
+            <p class="statement-lead">Project Statement:</p>
+            <p>For this project, our group created a machine learning model using Google Teachable Machine that can recognize whether a laptop is open, closed, or not present. While the task seemed fairly simple at first, the process of collecting images, training the model, and testing its performance gave us a much better understanding of how AI systems are built and where their limitations come from. Before working on this project, many of us thought about artificial intelligence as something developed by large technology companies using massive datasets and highly sophisticated algorithms. However, creating our own model demonstrated that even a simple machine learning system relies on the same basic principles that power much larger AI applications. More importantly, it showed us that AI systems are not inherently objective. They are products of the data, assumptions, and decisions made by the people who create them.</p>
+            <p>Our group's goal was to create a classifier capable of distinguishing between three different states: a laptop that was open, a laptop that was closed, and an environment where no laptop was present. To train the model, we collected a total of 304 images. These images were divided into three classes: 102 images of an open laptop, 102 images of a closed laptop, and 100 images with no laptop present. Rather than repeatedly taking the same image, we intentionally varied the position of the laptop, camera angle, background, distance from the camera, and lighting conditions. We wanted the model to learn general characteristics of each category rather than memorize a specific image. This process helped us appreciate the amount of effort required to create even a basic dataset and highlighted how important data collection is to the success of any machine learning system.</p>
+            <p>One of the biggest lessons from Unmasking AI that resonated with us during this project was Joy Buolamwini's argument that AI systems are only as reliable as the data they are trained on. Before taking this course, we understood that data was important, but building and training a model ourselves demonstrated just how influential the training process really is. Our model learned patterns entirely from the images we provided. If our dataset lacked sufficient variety in lighting conditions, backgrounds, angles, or laptop positions, the model's performance suffered. This experience reinforced one of the most important themes in Unmasking AI: AI systems are not automatically smart, neutral, or unbiased. Their effectiveness depends heavily on the quality and diversity of the data used to train them.</p>
+            <p>The process of collecting images highlighted this lesson almost immediately. At first, identifying whether a laptop was open, closed, or absent seemed straightforward. As we continued developing the model, however, we realized that machine learning systems often recognize visual patterns differently than humans do. As people, we can instantly identify a laptop regardless of where it is located, what is around it, or how it is positioned. The model, however, could only learn from examples we provided. If certain environments appeared more frequently in our dataset, the model sometimes relied on those environmental cues rather than the laptop itself. This helped us understand that machine learning systems do not truly understand objects in the way people do. Instead, they learn patterns and associations from training data.</p>
+            <p>Another important concept from Unmasking AI that connected directly to our project was Buolamwini's discussion of the "coded gaze." She argues that technology reflects the assumptions, priorities, and perspectives of its creators. Although our project was much smaller and simpler than the facial recognition systems examined in the book, we still observed this principle in practice. Our group determined which images to collect, how to label them, what categories would exist, and what would be considered a successful prediction. Those decisions shaped the model's understanding of the world. In other words, the model was not independently learning reality; it was learning the version of reality that we presented through our dataset. This realization changed how we think about the common perception that AI is purely objective.</p>
+            <p>The project also helped us better understand how bias can emerge in machine learning systems. Much of Buolamwini's research focuses on facial recognition systems that performed significantly worse on darker-skinned women because those groups were underrepresented in training datasets. While our model did not classify people, we still saw how limited datasets can affect performance. If our training examples became too similar, the model often struggled when it encountered examples that looked different from what it had previously seen.</p>
+            <p>We observed several examples of this during testing. When the model was shown a laptop positioned similarly to the training images, it often achieved very high confidence scores and classified the image correctly. In those situations, the model performed exactly as intended. However, we also encountered situations where the model produced false positives or incorrect classifications. For example, if a laptop was only partially visible or viewed from an unusual angle, the model occasionally predicted the wrong class. In some tests, a closed laptop could briefly be classified as open because the model identified visual features that resembled an open screen. We also found some false positives in Laptop_Open when Bluetooth keyboards or phones were used, as the regular grid pattern of keys on keyboards and bright rectangle of phones were detected as being laptops. In other situations, certain objects in the background or the edge of a desk occasionally caused the model to predict that a laptop was present when one was not. These incorrect predictions were not frequent, but they demonstrated that the model was relying on patterns rather than true understanding.</p>
+            <p>These false positives were among the most valuable parts of the project because they revealed the limitations of machine learning. Before testing, it is easy to look at accuracy percentages and assume that a model works reliably. However, seeing the model make mistakes showed us that accuracy alone does not tell the entire story. A model can perform extremely well in familiar conditions yet struggle in environments that differ from the training data. This experience directly reinforced Buolamwini's argument that developers must understand not only when AI systems work, but also when they fail and who is affected by those failures.</p>
+            <p>Another lesson we took from Unmasking AI is the importance of testing, transparency, and accountability. During development, our model initially appeared very accurate because it correctly classified many images similar to those used during training. Once we began introducing different backgrounds, lighting conditions, and camera perspectives, however, we discovered situations where the model's confidence levels dropped or incorrect predictions occurred. This reinforced the importance of evaluating machine learning systems under realistic conditions rather than ideal circumstances. If a model is only tested in situations that closely resemble its training environment, developers may overestimate its effectiveness.</p>
+            <p>In our project, these mistakes were relatively harmless. If the model incorrectly recognized a laptop's state, there were no significant consequences. However, Unmasking AI repeatedly demonstrates that similar errors can have serious implications when AI is deployed in hiring decisions, healthcare systems, education, surveillance technologies, and law enforcement applications. Through this project, we developed a greater appreciation for why transparency and accountability matter so much in AI development. Small technical mistakes can become significant social problems when deployed at scale.</p>
+            <p>The project also encouraged us to think more critically about accountability. When our model produced incorrect predictions, it became clear that those mistakes did not originate from the computer alone. The model's behavior reflected the choices we made during development. We determined the categories, selected the training images, defined the dataset, and tested the results. If the model struggled under certain conditions, that was often a reflection of our training process rather than a failure of the technology itself. This aligns closely with Buolamwini's broader argument that developers and organizations must remain responsible for the systems they create.</p>
+            <p>Another connection we found between our project and the course material involved representation and inclusion within technology. Throughout LIS 500, we have discussed how technological innovation is often presented through the accomplishments of a small number of individuals while overlooking contributions from women, people of color, and other underrepresented groups. Unmasking AI demonstrates that representation is not just a fairness issue; it is also a quality issue. When diverse perspectives are excluded from the design process, important problems can be overlooked. Working together on this project reinforced the value of approaching technology from multiple viewpoints and recognizing that different experiences can identify challenges that others may miss.</p>
+            <p>As a group, one of our biggest takeaways is that building a machine learning system gave us a much deeper understanding of how AI actually works. Before completing this project, many of us viewed concepts such as bias, data quality, and accountability as issues primarily associated with advanced AI systems developed by major technology companies. However, creating our own model demonstrated that these challenges appear even in relatively simple applications. The same fundamental concerns discussed in Unmasking AI emerged during our own development process, just on a smaller scale.</p>
+            <p>Overall, this project changed the way we think about artificial intelligence. Instead of viewing AI as a completely objective technology, we now see it as a tool shaped by human decisions, data, assumptions, and social contexts. Building our own machine learning model allowed us to connect the technical concepts behind AI with the ethical concerns discussed throughout Unmasking AI. As students in LIS 500 studying technology and its impact on society, we believe understanding these broader implications is just as important as learning how to build the technology itself.</p>
+            <p>Ultimately, the project demonstrated that responsible AI development involves much more than achieving high accuracy. It requires thoughtful data collection, extensive testing, awareness of potential biases, transparency about limitations, and accountability for outcomes. Our laptop classifier may be a relatively simple machine learning model, but it provided a practical example of many of the concepts discussed throughout the semester. Most importantly, it reinforced the idea that AI systems reflect the choices of their creators. As artificial intelligence becomes increasingly integrated into everyday life, the lessons from Unmasking AI will remain essential for evaluating both the opportunities and challenges that these technologies present.</p>
+
+
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide Pills and Pause/Play -->
+    <div class="carousel-controls">
+      <div class="dots" id="dots-container">
+        <button class="dot active" type="button" onclick="goToSlide(0)" aria-label="Screen 1"></button>
+        <button class="dot" type="button" onclick="goToSlide(1)" aria-label="Screen 2"></button>
+        <button class="dot" type="button" onclick="goToSlide(2)" aria-label="Screen 3"></button>
+        <button class="dot" type="button" onclick="goToSlide(3)" aria-label="Screen 4"></button>
+      </div>
+      <button class="pause-btn" id="pause-btn" type="button" onclick="toggleAutoplay()" aria-label="Pause or play slideshow">&#10074;&#10074;</button>
+    </div>
+  </main>
+
+  <script>
+    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/omq-yZ4EE/";
+    let model = null;
+    let webcam = null;
+    let labelContainer = null;
+    let maxPredictions = 3;
+    let animationId = null;
+    let isRunning = false;
+    let isReading = false;
+
+    let currentSlide = 0;
+    let autoplay = true;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function resetStatementState() {
+      isReading = false;
+      const box = document.getElementById("statement-box");
+      const readBtn = document.getElementById("read-btn");
+      if (box) {
+        box.classList.remove("expanded");
+        box.scrollTop = 0;
+      }
+      if (readBtn) {
+        readBtn.innerHTML = "Read &#8595;";
+      }
+    }
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove("active");
+      dots[currentSlide].classList.remove("active");
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add("active");
+      dots[currentSlide].classList.add("active");
+
+      if (currentSlide !== 3 && isReading) {
+        resetStatementState();
+      }
+    }
+
+    function changeSlide(step) {
+      goToSlide(currentSlide + step);
+    }
+
+    setInterval(function () {
+      if (autoplay && !isRunning && !isReading) {
+        changeSlide(1);
+      }
+    }, 30000);
+
+    function toggleAutoplay() {
+      autoplay = !autoplay;
+      document.getElementById("pause-btn").innerHTML = autoplay ? "&#10074;&#10074;" : "&#9654;";
+    }
+
+    function lockReading() {
+      if (!isReading) {
+        isReading = true;
+        autoplay = false;
+        document.getElementById("pause-btn").innerHTML = "&#9654;";
+        document.getElementById("statement-box").classList.add("expanded");
+        document.getElementById("read-btn").innerHTML = "Done Reading &#8593;";
+      }
+    }
+
+    function toggleStatement() {
+      const box = document.getElementById("statement-box");
+      const readBtn = document.getElementById("read-btn");
+
+      if (!isReading) {
+        isReading = true;
+        autoplay = false;
+        document.getElementById("pause-btn").innerHTML = "&#9654;";
+        box.classList.add("expanded");
+        readBtn.innerHTML = "Done Reading &#8593;";
+        box.scrollBy({ top: 140, behavior: "smooth" });
+      } else {
+        resetStatementState();
+        autoplay = true;
+        document.getElementById("pause-btn").innerHTML = "&#10074;&#10074;";
+      }
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") changeSlide(1);
+      if (e.key === "ArrowLeft") changeSlide(-1);
+    });
+
+    function createBarSlots(count) {
+      labelContainer = document.getElementById("label-container");
+      labelContainer.innerHTML = "";
+      for (let i = 0; i < count; i++) {
+        const row = document.createElement("div");
+        row.className = "bar-row";
+
+        const label = document.createElement("span");
+        label.className = "bar-label";
+        label.textContent = "Class " + (i + 1);
+
+        const track = document.createElement("div");
+        track.className = "bar-track";
+
+        const fill = document.createElement("div");
+        fill.className = "bar-fill";
+        fill.style.width = "0%";
+
+        const pct = document.createElement("span");
+        pct.className = "bar-pct";
+        pct.textContent = "0%";
+
+        track.appendChild(fill);
+        track.appendChild(pct);
+        row.appendChild(label);
+        row.appendChild(track);
+        labelContainer.appendChild(row);
+      }
+    }
+
+    async function init() {
+      const startBtn = document.getElementById("start-btn");
+      startBtn.textContent = "Loading...";
+      startBtn.disabled = true;
+
+      try {
+        model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
+        maxPredictions = model.getTotalClasses();
+
+        webcam = new tmImage.Webcam(280, 280, true);
+        await webcam.setup();
+        await webcam.play();
+
+        isRunning = true;
+        autoplay = false;
+        document.getElementById("pause-btn").innerHTML = "&#9654;";
+
+        const container = document.getElementById("webcam-container");
+        container.innerHTML = "";
+        container.appendChild(webcam.canvas);
+
+        startBtn.style.display = "none";
+        startBtn.disabled = false;
+        document.getElementById("stop-btn").style.display = "inline-flex";
+
+        createBarSlots(maxPredictions);
+        animationId = window.requestAnimationFrame(loop);
+      } catch (err) {
+        console.error("Camera/Model init error:", err);
+        startBtn.textContent = "Start Camera";
+        startBtn.disabled = false;
+        alert("Could not start camera or load model. Check webcam permissions and ensure you are viewing over HTTPS or localhost.");
+      }
+    }
+
+    async function loop() {
+      if (!isRunning || !webcam) return;
+      webcam.update();
+      await predict();
+      animationId = window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+      if (!isRunning || !model || !webcam) return;
+      const prediction = await model.predict(webcam.canvas);
+      for (let i = 0; i < maxPredictions; i++) {
+        const pct = Math.round(prediction[i].probability * 100);
+        const row = labelContainer.children[i];
+        if (!row) continue;
+        row.querySelector(".bar-label").textContent = prediction[i].className;
+        row.querySelector(".bar-fill").style.width = pct + "%";
+        row.querySelector(".bar-pct").textContent = pct + "%";
+      }
+    }
+
+    async function stopCamera() {
+      isRunning = false;
+      if (animationId) {
+        window.cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      if (webcam) {
+        await webcam.stop();
+        webcam = null;
+      }
+
+      document.getElementById("stop-btn").style.display = "none";
+      const startBtn = document.getElementById("start-btn");
+      startBtn.textContent = "Start Camera";
+      startBtn.style.display = "inline-flex";
+
+      document.getElementById("webcam-container").innerHTML =
+        '<span class="cam-idle">Camera Off</span>';
+
+      const defaults = ["Laptop_Open", "Laptop_Closed", "No_Laptop"];
+      createBarSlots(defaults.length);
+      defaults.forEach(function (name, idx) {
+        labelContainer.children[idx].querySelector(".bar-label").textContent = name;
+      });
+    }
+  </script>
+</body>
+</html>
