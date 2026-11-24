@@ -1,3 +1,18 @@
+/* 
+FIRST ITERATION
+I have designed an original dark theme for project 3 which is distinct from that of project 2. This includes a dark screen, using shades of obsidian and navy (#06070a) 
+and includes subtle gradients as well as glassmorphism to emphasise the Teachable Machine webcam classifier. Fonts were selected so that the headers and main text could be easily read. 
+Jetbrains Mono was used for displaying model names and confidence levels. An interactive full screen slideshow, animated prediction indicators and a scroll-able box were also developed 
+to enhance user engagement with our website. To guarantee good contrast between the dark background and light text, I used the WAVE accessibility program. My site is also responsive 
+and will reformat itself from dual screens and/or card layouts into a single column, scroll-able view on mobile devices. JI
+
+SECOND ITERATION
+For the second iteration, using peer and TA suggestions, I improved usability, data visibility, and overall site functionality. I included a colored 
+tabbed Table of Contents navigation bar so that users can ‘click-through’ to the live model, data, video, and statements sections. Hover functionality has also been implemented along with hyperlinked icons for the 3 Training Corpus tabs 
+which hyperlink to the relevant GitHub data directories. Furthermore, a Project Statement 'drawer,' which stops the slides from automatically changing when opened, has been introduced. Finally, a prominent red ‘Back to Project 2 homepage’ button was added. 
+All the new interactive functions have been tested for performance and optimum color contrast to make sure they meet the WCAG AA criteria and were analyzed via WAVE Google extension. JI */
+
+/* Global Reset & Base Canvas */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -590,6 +605,7 @@ html, body {
   background: rgba(255, 255, 255, 0.22);
 }
 
+/* Table of Contents & Back Navigation */
 .toc-nav {
   display: flex;
   align-items: center;
@@ -641,6 +657,8 @@ html, body {
   border-color: #ef4444;
 }
 
+
+/* Responsive Mobile Layout */
 @media (max-width: 860px) {
   .toc-nav { display: none; }
   html, body { overflow-y: auto; }
