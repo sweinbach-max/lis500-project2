@@ -26,7 +26,7 @@
       <button class="toc-btn" type="button" onclick="goToSlide(2)">03. Video</button>
       <button class="toc-btn" type="button" onclick="goToSlide(3)">04. Statement</button>
     </nav>
-
+  <!-- Return Link & External Repository Icons -->
     <div class="nav-right" style="display: flex; align-items: center; gap: 0.75rem;">
       <a href="../index.html" class="back-btn">&#8592; Project 2</a>
 
@@ -50,7 +50,7 @@
     <button class="nav-arrow prev" type="button" onclick="changeSlide(-1)" aria-label="Previous Screen">&#10094;</button>
     <button class="nav-arrow next" type="button" onclick="changeSlide(1)" aria-label="Next Screen">&#10095;</button>
 
-    <!-- Slide 1-->
+    <!-- Slide 1: Model-->
     <section class="slide active" data-slide="0">
       <div class="slide-bg bg-1"></div>
       <div class="slide-vignette"></div>
@@ -73,7 +73,7 @@
             <button class="btn-secondary" type="button" onclick="goToSlide(3)">&#9432; Read Project Statement</button>
           </div>
         </div>
-
+        <!-- Webcam Feed and Bars -->
         <div class="classifier-stage">
           <div class="camera-frame" id="webcam-container">
             <span class="cam-idle">Camera Off</span>
@@ -208,6 +208,7 @@
     </div>
   </main>
 
+<!-- Teachable Machine & Carousel Navigation Logic -->
   <script>
     const MODEL_URL = "https://teachablemachine.withgoogle.com/models/omq-yZ4EE/";
     let model = null;
@@ -412,5 +413,10 @@
       });
     }
   </script>
+ <!-- This is an example of my machine learning classifier which has been aded to our Project 2 website. Using semantic markup I structured the 4-part slideshow 
+(webcam model, training data, video showcase and project description), so that navigation is simple, easy, and interactive. The site links to my stored CSS document (stylepage_project3.css).
+It also makes use of TensorFlow.js and Google’s Teachable Machine image recognition tool to allow live, multi-state laptop classification with animated output level bars. After looking at both 
+student and TA suggestions, I incorporated a Table of Contents within the header, hyperlinks to each of the GitHub class data folders and a button hyperlink dircting to our Project 2 page. 
+All interactive site buttons, icons and high-contrast colours were tested using the WAVE accessibility programme to guarantee that my site complies with WCAG AA standards. -->
 </body>
 </html>
