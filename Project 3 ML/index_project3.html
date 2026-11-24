@@ -30,17 +30,18 @@
     <div class="nav-right" style="display: flex; align-items: center; gap: 0.75rem;">
       <a href="../index.html" class="back-btn">&#8592; Project 2</a>
 
-    <nav class="icon-links" aria-label="Project Links">
-      <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3" target="_blank" title="GitHub Repository" aria-label="GitHub Repository">
-        <img src="25231.png" alt="GitHub Repository" class="invert-icon" />
-      </a>
-      <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset" target="_blank" title="Dataset Folder" aria-label="Dataset Folder">
-        <img src="foldercustomgithub_93186.png" alt="Dataset Folder" class="invert-icon" />
-      </a>
-      <a class="icon-btn" href="https://teachablemachine.withgoogle.com/models/omq-yZ4EE/" target="_blank" title="Teachable Machine Model" aria-label="Teachable Machine Model">
-        <img src="images.png" alt="Teachable Machine Model" />
-      </a>
-    </nav>
+      <nav class="icon-links" aria-label="Project Links">
+        <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3" target="_blank" title="GitHub Repository" aria-label="GitHub Repository">
+          <img src="25231.png" alt="GitHub Repository" class="invert-icon" />
+        </a>
+        <a class="icon-btn" href="https://github.com/jesseijiwola/LIS510Project3/tree/main/Dataset" target="_blank" title="Dataset Folder" aria-label="Dataset Folder">
+          <img src="foldercustomgithub_93186.png" alt="Dataset Folder" class="invert-icon" />
+        </a>
+        <a class="icon-btn" href="https://teachablemachine.withgoogle.com/models/omq-yZ4EE/" target="_blank" title="Teachable Machine Model" aria-label="Teachable Machine Model">
+          <img src="images.png" alt="Teachable Machine Model" />
+        </a>
+      </nav>
+    </div>
   </header>
 
   <!-- Body -->
@@ -221,6 +222,7 @@
     let autoplay = true;
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
+    const tocBtns = document.querySelectorAll(".toc-btn");
 
     function resetStatementState() {
       isReading = false;
@@ -238,9 +240,13 @@
     function goToSlide(index) {
       slides[currentSlide].classList.remove("active");
       dots[currentSlide].classList.remove("active");
+      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.remove("active");
+
       currentSlide = (index + slides.length) % slides.length;
+
       slides[currentSlide].classList.add("active");
       dots[currentSlide].classList.add("active");
+      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.add("active");
 
       if (currentSlide !== 3 && isReading) {
         resetStatementState();
@@ -404,27 +410,6 @@
       defaults.forEach(function (name, idx) {
         labelContainer.children[idx].querySelector(".bar-label").textContent = name;
       });
-
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
-    const tocBtns = document.querySelectorAll(".toc-btn");
-
-    function goToSlide(index) {
-      slides[currentSlide].classList.remove("active");
-      dots[currentSlide].classList.remove("active");
-      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.remove("active");
-
-      currentSlide = (index + slides.length) % slides.length;
-
-      slides[currentSlide].classList.add("active");
-      dots[currentSlide].classList.add("active");
-      if (tocBtns[currentSlide]) tocBtns[currentSlide].classList.add("active");
-
-      if (currentSlide !== 3 && isReading) {
-        resetStatementState();
-      }
-    }
-    
     }
   </script>
 </body>
