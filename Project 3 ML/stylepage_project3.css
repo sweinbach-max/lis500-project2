@@ -539,7 +539,7 @@ html, body {
   border-radius: 999px;
 }
 
-/* Bottom-Right Carousel Pills + Pause/Play Toggle */
+/* Bottom-Right Carousel Pills and Pause/Play Toggle */
 .carousel-controls {
   position: fixed;
   bottom: 1.6rem;
